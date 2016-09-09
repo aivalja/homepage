@@ -8,7 +8,9 @@ var progress = 0;
 function update_bar() {
 	now = new Date();
 	progress = (now-then)/(future-then)
-	$("#progress_text").text(((Math.round(Math.pow(10,decimals)*100*progress)/Math.pow(10,decimals))).toFixed(decimals)+"%");
+	progress_trimmed = ((Math.round(Math.pow(10,decimals)*100*progress)/Math.pow(10,decimals))).toFixed(decimals)
+	$("#progress_text").text(progress_trimmed+"%");
+	document.title = progress_trimmed+"% engineer"
 	update_bars();
 	requestAnimationFrame(update_bar);
 }
