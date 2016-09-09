@@ -10,7 +10,7 @@ function update_bar() {
 	progress = (now-then)/(future-then)
 	$("#progress_text").text(((Math.round(Math.pow(10,decimals)*100*progress)/Math.pow(10,decimals))).toFixed(decimals)+"%");
 	update_bars();
-	setTimeout(update_bar,10);
+	requestAnimationFrame(update_bar);
 }
 
 function make_bars(amount){
@@ -20,7 +20,7 @@ function make_bars(amount){
 }
 function update_bars(){
 	for(i=0;i<amount;i++){
-		$("#bar-"+i).width(Number((100*progress*100*Math.pow(10,i)).toString().substr(1)/100%100)+"%");
+		$("#bar-"+i).css({ "width": Number((100*progress*100*Math.pow(10,i)).toString().substr(1)/100%100)+"%"});
 	}
 }
 $("document").ready(function(){
